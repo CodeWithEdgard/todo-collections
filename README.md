@@ -1,5 +1,8 @@
 # Gerenciador de Tarefas (Todo List) 📝
 
+![CI](https://github.com/CodeWithEdgard/todo-collections/actions/workflows/ci.yml/badge.svg)
+![Coverage](https://img.shields.io/badge/coverage-JaCoCo-blue)
+
 **Projeto de estudo em Java focado no domínio prático das Collections.**
 
 Um gerenciador de tarefas simples no console que utiliza diferentes tipos de Collections do Java para organizar, filtrar e manipular tarefas de forma eficiente.
@@ -34,17 +37,6 @@ Além disso, reforçar boas práticas:
 - Estatísticas (total, pendentes, concluídas, por prioridade/categoria)
 - Validação de título único
 
-### Estrutura do Projeto (Clean Architecture)
-
-```
-src/main/java/br/com/zpx/todo/
-├── domain/
-│   ├── Task.java
-│   └── Prioridade.java
-├── service/TodoManager.java        → lógica principal com todas as Collections
-└── presentation/DemoConsole.java   → menu interativo no console
-```
-
 ### Tecnologias e Boas Práticas
 
 - **Java 17**
@@ -55,13 +47,6 @@ src/main/java/br/com/zpx/todo/
 - Injeção de dependências manual
 - Exceções personalizadas
 - Constantes organizadas
-
-### Cobertura de Testes (JaCoCo)
-
-![Cobertura JaCoCo](jacoco-coverage.png)
-
-> Cobertura atual: **XX% linhas** | **XX% branches**  
-> Gerado com `mvn clean test jacoco:report`
 
 ### Como Executar
 
@@ -80,12 +65,5 @@ mvn exec:java -Dexec.mainClass="br.com.zpx.todo.presentation.Application"
 [main] INFO  br.com.zpx.todo.service.TodoManager - Tarefa "Estudar Collections" marcada como concluída
 [main] INFO  br.com.zpx.todo.service.TodoManager - Estatísticas: Total: 5 | Pendentes: 3 | Concluídas: 2
 ```
-
-### Próximos Passos Planejados
-
-- Persistência simples em arquivo JSON
-- API REST com Javalin
-- Filtros avançados com Stream API
-- Ordenação personalizada por múltiplos critérios
 
 ---
