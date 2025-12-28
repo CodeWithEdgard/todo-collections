@@ -7,6 +7,8 @@ import com.br.util.DateTimeUtils;
 
 public class Task {
 
+    private long id;
+
     private String titulo;
 
     private LocalDateTime criadoAs;
@@ -17,7 +19,7 @@ public class Task {
 
     private Status status;
 
-    public Task() {};
+    private static long contador = 0;
 
     public Task(String titulo, Prioridade prioridade, String categoria, Status status) {
 
@@ -26,7 +28,13 @@ public class Task {
         this.categoria = categoria;
         this.status = status;
 
+
         this.criadoAs = LocalDateTime.now();
+        this.id = ++contador;
+    }
+
+    public long getId() {
+        return this.id;
     }
 
     public String getTitulo() {
@@ -68,10 +76,13 @@ public class Task {
         this.status = status;
     }
 
+
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
+        result = prime * result + (int) (id ^ (id >>> 32));
         result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
         result = prime * result + ((criadoAs == null) ? 0 : criadoAs.hashCode());
         result = prime * result + ((prioridade == null) ? 0 : prioridade.hashCode());
@@ -89,6 +100,8 @@ public class Task {
         if (getClass() != obj.getClass())
             return false;
         Task other = (Task) obj;
+        if (id != other.id)
+            return false;
         if (titulo == null) {
             if (other.titulo != null)
                 return false;
