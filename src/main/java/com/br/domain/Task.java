@@ -37,6 +37,8 @@ public class Task {
         return this.id;
     }
 
+    // SEM SETTER PARA ID
+
     public String getTitulo() {
         return this.titulo;
     }
@@ -126,13 +128,11 @@ public class Task {
 
     @Override
     public String toString() {
-
-        // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-
-        return "Task [titulo=" + titulo + ", criadoAs=" + DateTimeUtils.formatar(criadoAs)
-                + ", prioridade=" + prioridade + ", categoria=" + categoria + ", status=" + status
-                + "]";
+        return "Task [id=" + id + ", titulo=" + titulo + ", criadoAs="
+                + DateTimeUtils.formatar(criadoAs) + ", prioridade=" + prioridade + ", categoria="
+                + categoria + ", status=" + status + "]";
     }
+
 
 
 }
