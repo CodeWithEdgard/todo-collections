@@ -1,16 +1,29 @@
 package com.br.service;
 
-import com.br.domain.enums.Prioridade;
-import com.br.domain.enums.Status;
+import java.util.Set;
+import com.br.domain.Task;
+import com.br.repository.TaskRepository;
 
 public class TaskServiceImpl implements TaskService {
 
-    @Override
-    public void adicionarTarefa(String titulo, Prioridade prioridade, String categoria,
-            Status status) {}
+    private TaskRepository repository;
+
+    public TaskServiceImpl(TaskRepository repository) {
+        
+        this.repository = repository;
+    }
 
     @Override
-    public void listarTodasTarefas() {}
+    public void adicionarTarefa(Task task) {
+
+        repository.adicionarTarefa(task);
+    }
+
+    @Override
+    public Set<Task> listarTodasTarefas() {
+
+        return repository.listarTodasTarefas();
+    }
 
     @Override
     public void listarTarefasPendentes() {}

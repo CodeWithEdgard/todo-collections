@@ -1,13 +1,13 @@
 package com.br.service;
 
-import com.br.domain.enums.Prioridade;
-import com.br.domain.enums.Status;
+import java.util.Set;
+import com.br.domain.Task;
 
 public interface TaskService {
 
-    void adicionarTarefa(String titulo, Prioridade prioridade, String categoria, Status status);
+    void adicionarTarefa(Task task);
 
-    void listarTodasTarefas();
+    Set<Task> listarTodasTarefas();
 
     void listarTarefasPendentes();
 
