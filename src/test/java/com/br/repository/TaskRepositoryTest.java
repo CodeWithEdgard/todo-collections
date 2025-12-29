@@ -10,6 +10,9 @@ public class TaskRepositoryTest {
 
     TaskRepository repository = new TaskRepositoryImpl();
     Task task = new Task("oi", Prioridade.ALTA, "Java", Status.PENDENTE);
+    Task task2 = new Task("oii", Prioridade.ALTA, "Java", Status.PENDENTE);
+    Task task3 = new Task("oiii", Prioridade.ALTA, "Java", Status.PENDENTE);
+    Task task4 = new Task("oiiii", Prioridade.ALTA, "Java", Status.PENDENTE);
 
 
     @Test
@@ -18,6 +21,18 @@ public class TaskRepositoryTest {
         repository.adicionarTarefa(task);
 
         assertEquals(1, repository.listarTodasTarefas().size());
+
+    }
+
+    @Test
+    void deveListarTarefasComSucesso() {
+
+        repository.adicionarTarefa(task);
+        repository.adicionarTarefa(task2);
+        repository.adicionarTarefa(task3);
+        repository.adicionarTarefa(task4);
+
+        assertEquals(4, repository.listarTodasTarefas().size());
 
     }
 }
