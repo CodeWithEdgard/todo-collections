@@ -33,4 +33,18 @@ public class TaskServiceImplTest {
         assertEquals(1, repository.listarTodasTarefas().size());
     }
 
+    @Test
+    public void deveListarTodasTarefas() {
+
+        Task task2 = new Task("tarefa 2", Prioridade.ALTA, "Java", Status.PENDENTE);
+
+        service.adicionarTarefa(task);
+        service.adicionarTarefa(task2);
+        service.listarTodasTarefas();
+
+        assertEquals(2, service.listarTodasTarefas().size());
+
+
+    }
+
 }
