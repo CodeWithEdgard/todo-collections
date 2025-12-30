@@ -1,12 +1,14 @@
 package com.br.repository;
 
-import java.util.Set;
+import java.util.List;
 import com.br.domain.Task;
 
 public interface TaskRepository {
 
     void adicionarTarefa(Task task);
 
-    Set<Task> listarTodasTarefas();
+    List<Task> listarTodasTarefas();
+
+
 
 }

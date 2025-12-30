@@ -1,6 +1,6 @@
 package com.br.service;
 
-import java.util.Set;
+import java.util.List;
 import com.br.domain.Task;
 import com.br.repository.TaskRepository;
 
@@ -9,7 +9,7 @@ public class TaskServiceImpl implements TaskService {
     private TaskRepository repository;
 
     public TaskServiceImpl(TaskRepository repository) {
-        
+
         this.repository = repository;
     }
 
@@ -20,7 +20,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Set<Task> listarTodasTarefas() {
+    public List<Task> listarTodasTarefas() {
 
         return repository.listarTodasTarefas();
     }

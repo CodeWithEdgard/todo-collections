@@ -1,6 +1,6 @@
 package com.br.controller;
 
-import java.util.Set;
+import java.util.List;
 import com.br.domain.Task;
 import com.br.service.TaskService;
 
@@ -20,7 +20,7 @@ public class TaskControllerImpl implements TaskController {
     }
 
     @Override
-    public Set<Task> listarTodasTarefas() {
+    public List<Task> listarTodasTarefas() {
 
         return service.listarTodasTarefas();
     }

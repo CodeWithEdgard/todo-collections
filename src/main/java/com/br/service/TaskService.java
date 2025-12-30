@@ -1,13 +1,13 @@
 package com.br.service;
 
-import java.util.Set;
+import java.util.List;
 import com.br.domain.Task;
 
 public interface TaskService {
 
     void adicionarTarefa(Task task);
 
-    Set<Task> listarTodasTarefas();
+    List<Task> listarTodasTarefas();
 
     void listarTarefasPendentes();
 
