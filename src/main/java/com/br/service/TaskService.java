@@ -1,6 +1,7 @@
 package com.br.service;
 
 import java.util.List;
+import java.util.Set;
 import com.br.domain.Task;
 
 public interface TaskService {
@@ -9,13 +10,15 @@ public interface TaskService {
 
     List<Task> listarTodasTarefas();
 
-    void listarTarefasPendentes();
+    Task listarTarefaPorID(int id);
 
-    void listarTarefasConcluidas();
+    Set<Task> listarTarefasConcluidas();
 
-    void marcarTarefaComoConcluida(long id);
+    void marcarTarefaComoConcluida(int id);
 
-    void filtrarTarefasPorPrioridade();
+    List<Task> filtrarTarefasPorPrioridade();
+
+    List<Task> listarTarefasPendentes();
 
     void filtrarTarefasPorCategoria();
 
