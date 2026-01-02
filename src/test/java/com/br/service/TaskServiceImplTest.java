@@ -1,14 +1,16 @@
 package com.br.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.br.domain.Task;
 import com.br.domain.enums.Prioridade;
 import com.br.domain.enums.Status;
+import com.br.exception.TaskNullResponse;
 import com.br.repository.TaskRepository;
 import com.br.repository.TaskRepositoryImpl;
-
 
 public class TaskServiceImplTest {
 
@@ -20,7 +22,7 @@ public class TaskServiceImplTest {
     void setUp() {
 
         repository = new TaskRepositoryImpl();
-        task = new Task("oi", Prioridade.ALTA, "Java", Status.PENDENTE);
+        task = new Task("oi", Prioridade.ALTA, "Java", Status.PENDENTE, "");
         service = new TaskServiceImpl(repository);
 
     }
@@ -34,16 +36,24 @@ public class TaskServiceImplTest {
     }
 
     @Test
+    public void deveLancarExceptionAdicionarNullo() {
+
+        TaskNullResponse e =
+                assertThrows(TaskNullResponse.class, () -> new Task(null, null, null, null, ""));
+
+        assertTrue(e.getMessage().contains("Não e permitido valores nullos"));
+    }
+
+    @Test
     public void deveListarTodasTarefas() {
 
-        Task task2 = new Task("tarefa 2", Prioridade.ALTA, "Java", Status.PENDENTE);
+        Task task2 = new Task("tarefa 2", Prioridade.ALTA, "Java", Status.PENDENTE, "");
 
         service.adicionarTarefa(task);
         service.adicionarTarefa(task2);
         service.listarTodasTarefas();
 
         assertEquals(2, service.listarTodasTarefas().size());
-
 
     }
 

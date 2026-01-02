@@ -17,7 +17,7 @@ class TaskTest {
         String categoriaEsperada = "Estudos";
         Status statusEsperado = Status.PENDENTE;
 
-        Task task = new Task(tituloEsperado, prioridadeEsperada, categoriaEsperada, statusEsperado);
+        Task task = new Task(tituloEsperado, prioridadeEsperada, categoriaEsperada, statusEsperado, "");
 
         assertEquals(tituloEsperado, task.getTitulo());
         assertEquals(prioridadeEsperada, task.getPrioridade());
@@ -31,8 +31,8 @@ class TaskTest {
 
     @Test
     void deveGerarIdsDiferentesParaTasksDiferentes() {
-        Task task1 = new Task("Tarefa 1", Prioridade.MEDIA, "Casa", Status.PENDENTE);
-        Task task2 = new Task("Tarefa 2", Prioridade.BAIXA, "Trabalho", Status.PENDENTE);
+        Task task1 = new Task("Tarefa 1", Prioridade.MEDIA, "Casa", Status.PENDENTE, "");
+        Task task2 = new Task("Tarefa 2", Prioridade.BAIXA, "Trabalho", Status.PENDENTE, "");
 
         assertNotEquals(task1.getId(), task2.getId());
         // task2 deve ter ID maior que task1
@@ -42,7 +42,7 @@ class TaskTest {
 
     @Test
     void devePermitirAlterarTituloPrioridadeCategoriaEStatus() {
-        Task task = new Task("Título antigo", Prioridade.BAIXA, "Antiga", Status.PENDENTE);
+        Task task = new Task("Título antigo", Prioridade.BAIXA, "Antiga", Status.PENDENTE, "");
 
         task.setTitulo("Título novo");
         task.setPrioridade(Prioridade.ALTA);
@@ -57,7 +57,7 @@ class TaskTest {
 
     @Test
     void toStringDeveMostrarInformacoesDaTask() {
-        Task task = new Task("Fazer exercícios", Prioridade.ALTA, "Saúde", Status.PENDENTE);
+        Task task = new Task("Fazer exercícios", Prioridade.ALTA, "Saúde", Status.PENDENTE, "");
 
         String texto = task.toString();
 

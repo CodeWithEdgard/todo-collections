@@ -40,4 +40,17 @@ public class TaskRepositoryImpl implements TaskRepository {
         return historicoTarefas;
     }
 
+    @Override
+    public Task listarTarefaPorID(int id) {
+
+        Task tarefa =
+                historicoTarefas.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
+
+        return tarefa;
+    }
+
+    @Override
+    public void marcarTarefaComoConcluida(int id) {
+        
+    }
 }

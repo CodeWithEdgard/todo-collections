@@ -9,6 +9,8 @@ public interface TaskRepository {
 
     List<Task> listarTodasTarefas();
 
+    Task listarTarefaPorID(int id);
 
+    void marcarTarefaComoConcluida(int id);
 
 }

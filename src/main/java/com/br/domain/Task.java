@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicLong;
 import com.br.domain.enums.Prioridade;
 import com.br.domain.enums.Status;
+import com.br.exception.TaskNullResponse;
 import com.br.util.DateTimeUtils;
 
 public class Task {
@@ -20,16 +21,28 @@ public class Task {
 
     private Status status;
 
+    private String descricao;
+
     private static AtomicLong contador = new AtomicLong(0);
 
-    public Task(String titulo, Prioridade prioridade, String categoria, Status status) {
+    public Task(String titulo, Prioridade prioridade, String categoria, Status status,
+            String descricao) {
+
+        if (titulo == null || prioridade == null || categoria == null || status == null) {
+            throw new TaskNullResponse("Não e permitido valores nullos");
+        }
+
+        if (titulo.trim().isEmpty() || categoria.trim().isEmpty()) {
+            throw new TaskNullResponse("Não e permitido valores nullos");
+        }
 
         this.titulo = titulo;
         this.prioridade = prioridade;
         this.categoria = categoria;
         this.status = status;
-        this.criadoAs = LocalDateTime.now();
+        this.descricao = descricao;
 
+        this.criadoAs = LocalDateTime.now();
         this.id = contador.incrementAndGet();
     }
 
@@ -76,6 +89,14 @@ public class Task {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getDescricao() {
+        return this.descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     @Override

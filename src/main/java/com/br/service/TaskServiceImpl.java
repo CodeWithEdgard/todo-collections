@@ -2,6 +2,7 @@ package com.br.service;
 
 import java.util.List;
 import com.br.domain.Task;
+import com.br.exception.TaskNullResponse;
 import com.br.repository.TaskRepository;
 
 public class TaskServiceImpl implements TaskService {
@@ -15,6 +16,10 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void adicionarTarefa(Task task) {
+
+        if (task.equals(null)) {
+            throw new TaskNullResponse("Valor de entrada não pode ser nullo");
+        }
 
         repository.adicionarTarefa(task);
     }

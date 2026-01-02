@@ -22,8 +22,8 @@ public class TaskControllerTest {
     @BeforeEach
     void setUp() {
 
-        task = new Task("oi", Prioridade.ALTA, "Java", Status.PENDENTE);
-        task1 = new Task("est", Prioridade.ALTA, "Java", Status.PENDENTE);
+        task = new Task("oi", Prioridade.ALTA, "Java", Status.PENDENTE, "");
+        task1 = new Task("est", Prioridade.ALTA, "Java", Status.PENDENTE, "");
 
 
         repository = new TaskRepositoryImpl();
