@@ -2,6 +2,7 @@ package com.br.repository;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Queue;
 import java.util.Set;
 import com.br.domain.Task;
 import com.br.domain.enums.Prioridade;
+import com.br.domain.enums.Status;
 
 public class TaskRepositoryImpl implements TaskRepository {
 
@@ -43,14 +45,31 @@ public class TaskRepositoryImpl implements TaskRepository {
     @Override
     public Task listarTarefaPorID(int id) {
 
-        Task tarefa =
-                historicoTarefas.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
-
-        return tarefa;
+        return historicoTarefas.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
     }
 
     @Override
-    public void marcarTarefaComoConcluida(int id) {
-        
+    public void marcarTarefaComoConcluida(Task tarefa) {
+        tarefasConcluidas.add(tarefa);
+
     }
+
+    @Override
+    public Set<Task> listarTarefasConcluidas() {
+        return tarefasConcluidas;
+    }
+
+    @Override
+    public List<Task> filtrarTarefasPorPrioridade() {
+
+        return historicoTarefas.stream().filter(t -> t.getPrioridade() == Prioridade.ALTA)
+                .sorted(Comparator.comparing(Task::getCriadoAs).reversed()).toList();
+    }
+
+    public List<Task> listarTarefasPendentes() {
+        return historicoTarefas.stream().filter(t -> t.getStatus() == Status.PENDENTE).toList();
+    }
+
+
+
 }
