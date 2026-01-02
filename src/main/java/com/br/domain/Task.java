@@ -1,6 +1,7 @@
 package com.br.domain;
 
 import java.time.LocalDateTime;
+import java.util.concurrent.atomic.AtomicLong;
 import com.br.domain.enums.Prioridade;
 import com.br.domain.enums.Status;
 import com.br.util.DateTimeUtils;
@@ -19,7 +20,7 @@ public class Task {
 
     private Status status;
 
-    private static long contador = 0;
+    private static AtomicLong contador = new AtomicLong(0);
 
     public Task(String titulo, Prioridade prioridade, String categoria, Status status) {
 
@@ -27,10 +28,9 @@ public class Task {
         this.prioridade = prioridade;
         this.categoria = categoria;
         this.status = status;
-
-
         this.criadoAs = LocalDateTime.now();
-        this.id = ++contador;
+
+        this.id = contador.incrementAndGet();
     }
 
     public long getId() {
@@ -77,8 +77,6 @@ public class Task {
     public void setStatus(Status status) {
         this.status = status;
     }
-
-
 
     @Override
     public int hashCode() {
@@ -133,6 +131,8 @@ public class Task {
                 + categoria + ", status=" + status + "]";
     }
 
-
+    public static void resetar() {
+        contador.set(0);
+    }
 
 }
